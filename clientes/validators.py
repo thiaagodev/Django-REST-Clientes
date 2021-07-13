@@ -1,3 +1,6 @@
+import re
+
+
 def cpf_valido(cpf):
     return len(cpf) == 11
 
@@ -8,4 +11,8 @@ def rg_valido(rg):
     return len(rg) == 9
 
 def celular_valido(celular):
-    return len(celular) >= 11 and len(celular) <= 14
+    """ Verifica se o celular é válido (11 55555-4444) """
+    modelo = '[0-9]{2} [0-9]{5}-[0-9]{4}'
+    resposta = re.findall(modelo, celular)
+
+    return resposta
